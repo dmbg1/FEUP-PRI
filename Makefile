@@ -3,7 +3,7 @@
 all: clean collect process analyze
 
 clean:
-	rm -rf data processed analysis
+#	rm -rf data processed analysis
 
 .PHONY: collect processed analysis adhoc
 collect:
@@ -11,8 +11,13 @@ collect:
 	# This can involved scraping websites, downloading files from servers,
 	# or other similar operations.
 	# As best practice, ensure that all output data goes to a known location (e.g., here, data/)
-	mkdir -p data/...
-	Rscript code/get_data_1.R
+	kaggle datasets download -d mrisdal/fake-news
+	ifdef ($(OS), Windows_NT)
+		powershell -command "Expand-Archive -Force 'fake-news.zip' 'data'"
+    else
+		unzip fake-news.zip -d './data' 
+	endif
+	rm ./fake-news.zip
 
 process:
 	# This target is reserved for data processing, which typically includes
