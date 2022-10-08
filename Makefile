@@ -21,10 +21,11 @@ process:
 	# You may even opt for several targets for bigger granularity
 	# (e.g., a process_cleaning and a process_refinement target)
 	# Moreover, ensure that data also goes to a known location for easier analysis
-	python3 src/data_cleaning_drop.py						# Identify and Remove unnecessary columns
-	python3 src/data_cleaning_replace_null_authors.py		# Replace 'null' authors with 'Anonymous'
-	python3 src/data_cleaning_remove_na.py					# Remove rows with 'null' values
-	python3 src/data_drop_dup.py							#
+	python3 src/data_cleaning/drop_columns.py						# Identify and Remove unnecessary columns
+	python3 src/data_cleaning/replace_null_authors.py		# Replace 'null' authors with 'Anonymous'
+	python3 src/data_cleaning/drop_na.py					# Remove rows with 'null' values
+	python3 src/data_cleaning/drop_dup.py					# Remove duplicates from data
+	python3 src/data_cleaning/date_format.py					# Format dates of 'published' column
 
 analyze:
 	# This target is recommended to isolate all data analysis scripts.

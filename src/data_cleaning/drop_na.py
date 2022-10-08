@@ -1,0 +1,11 @@
+# Remove null values
+
+import pandas as pd
+
+data = pd.read_csv("./data/fake_clean.csv")
+
+data = data[data['body'].notna()]              
+data = data[data['title'].notna()]              # 5% Na Values
+data = data[data['country'].notna()]            # 1% Na Values
+
+data.to_csv('./data/fake_clean.csv', index=False)
