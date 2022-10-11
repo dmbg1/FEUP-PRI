@@ -6,6 +6,6 @@ import pandas as pd
 
 data = pd.read_csv("./data/fake_clean.csv")
 
-data.drop_duplicates(inplace=True)
-
+aux = len(data)
+data.drop_duplicates(inplace=True) # 31 rows
 data.to_csv('./data/fake_clean.csv', index=False)
