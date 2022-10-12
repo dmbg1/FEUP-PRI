@@ -3,7 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 
-data = pd.read_csv("../data/fake_clean.csv")
+data = pd.read_csv("./data/fake_clean.csv")
 
 temp_data = data.drop(columns=['author', 'published', 'title', 'body', 'language', 'site_url', 'type'])
 
@@ -17,7 +17,8 @@ plt.bar(average_dict.keys(), average_dict.values())
 plt.xlabel('Country')
 plt.ylabel('Average spam score')
 plt.title('Average spam score per country')
-plt.show()
+plt.savefig("./data/plots/avg_spam_per_country.jpg")
+plt.close()
 
 temp_data = data.drop(columns=['author', 'published', 'title', 'body', 'language', 'country', 'spam_score'])
 
@@ -32,4 +33,5 @@ plt.bar(result_data['type'].value_counts().index, result_data['type'].value_coun
 plt.xlabel('Type of fake news')
 plt.ylabel('Number of websites')
 plt.title('Number of websites that write fake news of each specific type')
-plt.show()
+plt.savefig("./data/plots/nr_websites_per_type.jpg")
+plt.close()
