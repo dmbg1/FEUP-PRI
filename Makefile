@@ -12,11 +12,7 @@ collect:
 	# or other similar operations.
 	# As best practice, ensure that all output data goes to a known location (e.g., here, data/)
 	kaggle datasets download -d mrisdal/fake-news
-	ifdef ($(OS), Windows_NT)
-		powershell -command "Expand-Archive -Force 'fake-news.zip' 'data'"
-    else
-		unzip fake-news.zip -d './data' 
-	endif
+	unzip fake-news.zip -d './data' 
 	rm ./fake-news.zip
 
 process:
