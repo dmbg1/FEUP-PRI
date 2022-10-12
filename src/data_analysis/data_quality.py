@@ -1,4 +1,3 @@
-from calendar import c
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -20,6 +19,8 @@ def generate_null_bar_chart():
 
     title_col_non_nulls = round(df['title'].count() * 100 / len(df), 2)
     country_col_non_nulls = round(df['country'].count() * 100 / len(df), 2)
+    df['text'] = df[df['text'].notna()]['text'].apply(lambda x: x.strip())
+    df['text'] = df[df['text'] != ""]['text']
     body_col_non_nulls = round(df['text'].count() * 100 / len(df), 2)
     author_col_non_nulls = round(df['author'].count() * 100 / len(df), 2)
 
