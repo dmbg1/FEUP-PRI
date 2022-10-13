@@ -21,5 +21,6 @@ process:
 analyze:
 	# This target creates the plots directory with data analysis plots
 	mkdir ./data/plots -p									# Create plots folder
-	python3 src/data_analysis/data_quality.py				# Data Quality Plots
+	python3 src/data_analysis/data_quality.py				# Data Quality Plots (non-processed)
+	python3 src/data_analysis/data_exploration.py			# Data Quality Plots (processed)
 	python3 src/data_analysis/multiple_variables.py			# Relations Plots
