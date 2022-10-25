@@ -51,16 +51,14 @@ def generate_null_bar_chart():
 df = pd.read_csv("./data/fake.csv")
 
 # Dropped Columns with Frequencies
-from matplotlib.gridspec import GridSpec
-
 gs=GridSpec(3,2)
 
 plt.figure(figsize=(10, 5))
 generate_frequency_pie_chart("replies_count", "Reply Amount Frequency", "replies_count_pie_chart", gs, 0, 0)
-generate_frequency_pie_chart("participants_count", "Participants Amount Frequency", "participants_count_pie_chart", gs, 0, 1)
+generate_frequency_pie_chart("participants_count", "Participant Amount Frequency", "participants_count_pie_chart", gs, 0, 1)
 generate_frequency_pie_chart("likes", "Like Amount Frequency", "likes_pie_chart", gs, 1, 0)
 generate_frequency_pie_chart("comments", "Comment Amount Frequency", "comments_pie_chart", gs, 1, 1)
-generate_frequency_pie_chart("shares", "Shares Amount Frequency", "shares_pie_chart", gs, 2, -1) # -1 to ocuppy line span
+generate_frequency_pie_chart("shares", "Share Amount Frequency", "shares_pie_chart", gs, 2, -1) # -1 to ocuppy line span
 plt.savefig("./data/plots/frequencies_pie_charts.png")
 plt.close()
 

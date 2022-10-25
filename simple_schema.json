@@ -1,0 +1,95 @@
+{
+	"add-field-type": [
+        {
+            "name":"authorName",
+            "class":"solr.TextField",
+            "indexAnalyzer":{
+                "tokenizer":{
+                    "class":
+                }
+            }
+        },
+        {
+            "name":"courseTitle",
+            "class":"solr.TextField",
+            "indexAnalyzer":{
+                "tokenizer":{
+                    "class":"solr.StandardTokenizerFactory"
+                },
+                "filters":[
+                    {"class":"solr.ASCIIFoldingFilterFactory", "preserveOriginal":true},
+                    {"class":"solr.LowerCaseFilterFactory"}
+                ]
+            },
+            "queryAnalyzer":{
+                "tokenizer":{
+                    "class":"solr.StandardTokenizerFactory"
+                },
+                "filters":[
+                    {"class":"solr.ASCIIFoldingFilterFactory", "preserveOriginal":true},
+                    {"class":"solr.LowerCaseFilterFactory"}
+                ]
+            }
+        },
+        {
+            "name":"float",
+            "class":"solr.FloatPointField",     
+            "docValues":true                    //acho que isto é preciso pra sort - to check
+        },
+        {
+            "name":"date",
+            "class": "solr.DatePointField"
+        },
+        {
+
+        }
+    ],
+    "add-field": [
+        {
+            "name": "author",
+            "type": "authorName",
+            "indexed": true
+        },
+        {
+            "name": "published",
+            "type": "date",
+            "datetimeformat"="YYYY-MM-DD'T'HH:mm:sss'Z'" 
+            "indexed": true
+        },
+        {
+            "name": "title",
+            "type": "newsTitle",
+            "indexed": true
+        },
+        {
+            "name": "body",
+            "type": "newsBody",
+            "indexed": true
+        },
+        {
+            "name": "language",
+            "type": "newsLanguage",
+            "indexed": true
+        },
+        {
+            "name": "site_url",
+            "type": "url",
+            "indexed": true
+        },
+        {
+            "name": "country",
+            "type": "countryCode",
+            "indexed": true
+        },
+        {
+            "name": "spam_score",
+            "type": "float",
+            "indexed": true
+        },
+        {
+            "name": "type",
+            "type": "newsType",
+            "indexed": true
+        }
+    ]
+}
