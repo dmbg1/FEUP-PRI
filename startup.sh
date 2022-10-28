@@ -13,7 +13,7 @@ sleep 10
   #  http://localhost:8983/solr/courses/schema
 
 # Populate collection
-#bin/post -c courses /data/meic_courses.json
+bin/post -c news /data/fake_clean.csv
 
 # Restart in foreground mode so we can access the interface
 solr restart -f
