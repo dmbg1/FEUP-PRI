@@ -103,6 +103,38 @@
             }
         },
         {
+            "name":"baseText",
+            "class":"solr.TextField",
+            "indexAnalyzer":{
+                "tokenizer":{
+                    "class":"solr.StandardTokenizerFactory"
+                },
+                "filters":[
+                    {
+                        "class":"solr.ASCIIFoldingFilterFactory",
+                        "preserveOriginal":true
+                    },
+                    {
+                        "class":"solr.LowerCaseFilterFactory"
+                    }
+                ]
+            },
+            "queryAnalyzer":{
+                "tokenizer":{
+                    "class":"solr.StandardTokenizerFactory"
+                },
+                "filters":[
+                    {
+                        "class":"solr.ASCIIFoldingFilterFactory",
+                        "preserveOriginal":true
+                    },
+                    {
+                        "class":"solr.LowerCaseFilterFactory"
+                    }
+                ]
+            }
+        },
+        {
             "name":"newsTitle",
             "class":"solr.TextField",
             "indexAnalyzer":{
@@ -208,17 +240,17 @@
         },
         {
             "name": "language",
-            "type": "newsLanguage",
+            "type": "baseText",
             "indexed": true
         },
         {
             "name": "site_url",
-            "type": "url",
+            "type": "baseText",
             "indexed": true
         },
         {
             "name": "country",
-            "type": "countryCode",
+            "type": "baseText",
             "indexed": true
         },
         {
@@ -228,7 +260,7 @@
         },
         {
             "name": "type",
-            "type": "newsType",
+            "type": "baseText",
             "indexed": true
         }
     ]
