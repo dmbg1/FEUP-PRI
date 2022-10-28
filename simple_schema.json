@@ -4,9 +4,155 @@
             "name":"authorName",
             "class":"solr.TextField",
             "indexAnalyzer":{
+                "tokenizer": {
+                    "class": "solr.StandardTokenizerFactory"
+                },
+                "filters": [
+                    {   "class":"solr.ASCIIFoldingFilterFactory",
+                        "preserveOriginal":true
+                    },
+                    {
+                        "class":"solr.LowerCaseFilterFactory"
+                    },
+                    {   
+                        "class":"solr.BeiderMorseFilterFactory",
+                        "nameType":"GENERIC",
+                        "ruleType":"APPROX",
+                        "concatenate":false
+                    },
+                    {
+                        "class": "solr.CommonGramsFilterFactory"
+                    }
+                ]
+            },
+            "queryAnalyzer":{
+                "tokenizer": {
+                    "class": "solr.StandardTokenizerFactory"
+                },
+                "filters": [
+                    {   "class":"solr.ASCIIFoldingFilterFactory",
+                        "preserveOriginal":true
+                    },
+                    {
+                        "class":"solr.LowerCaseFilterFactory"
+                    },
+                    {   
+                        "class":"solr.BeiderMorseFilterFactory",
+                        "nameType":"GENERIC",
+                        "ruleType":"APPROX",
+                        "concatenate":false
+                    },
+                    {
+                        "class": "solr.CommonGramsFilterFactory"
+                    }
+                ]
+            }
+        },
+        {
+            "name":"newsBody",
+            "class":"solr.TextField",
+            "indexAnalyzer":{
                 "tokenizer":{
-                    "class":
-                }
+                    "class":"solr.StandardTokenizerFactory"
+                },
+                "filters":[
+                    {
+                        "class":"solr.ASCIIFoldingFilterFactory",
+                        "preserveOriginal":true
+                    },
+                    {
+                        "class":"solr.LowerCaseFilterFactory"
+                    },
+                    {
+                        "class":"solr.PatternReplaceFilterFactory",
+                        "pattern":"\n",
+                        "replacement":" "
+                    }, /* Not entirely sure this is needed, but if it is only at index I think (maybe only this or hyphenated words) */
+                    {
+                        "class": "solr.StopFilterFactory",
+                        "ignoreCase": true
+                    },
+                    /* solr.HunspellStemFilterFactory if we can find the dictionaries */
+                    {
+                        "class":"solr.HyphenatedWordsFilterFactory" /* only at index (it says in the documentation) */
+                    },
+                    {
+                        "class":"solr.DoubleMetaphoneFilterFactory"
+                    }
+                ]
+            },
+            "queryAnalyzer":{
+                "tokenizer":{
+                    "class":"solr.StandardTokenizerFactory"
+                },
+                "filters":[
+                    {
+                        "class":"solr.ASCIIFoldingFilterFactory",
+                        "preserveOriginal":true
+                    },
+                    {
+                        "class":"solr.LowerCaseFilterFactory"
+                    },
+                    {
+                        "class": "solr.StopFilterFactory",
+                        "ignoreCase": true
+                    },
+                    /* solr.HunspellStemFilterFactory if we can find the dictionaries */
+                    {
+                        "class":"solr.DoubleMetaphoneFilterFactory"
+                    }
+                ]
+            }
+        },
+        {
+            "name":"newsTitle",
+            "class":"solr.TextField",
+            "indexAnalyzer":{
+                "tokenizer":{
+                    "class":"solr.StandardTokenizerFactory"
+                },
+                "filters":[
+                    {
+                        "class":"solr.ASCIIFoldingFilterFactory",
+                        "preserveOriginal":true
+                    },
+                    {
+                        "class":"solr.LowerCaseFilterFactory"
+                    },
+                    {
+                        "class": "solr.StopFilterFactory",
+                        "ignoreCase": true
+                    },
+                    /* solr.HunspellStemFilterFactory if we can find the dictionaries */
+                    {
+                        "class":"solr.HyphenatedWordsFilterFactory" /* only at index (it says in the documentation) */
+                    },
+                    {
+                        "class":"solr.DoubleMetaphoneFilterFactory"
+                    }
+                ]
+            },
+            "queryAnalyzer":{
+                "tokenizer":{
+                    "class":"solr.StandardTokenizerFactory"
+                },
+                "filters":[
+                    {
+                        "class":"solr.ASCIIFoldingFilterFactory",
+                        "preserveOriginal":true
+                    },
+                    {
+                        "class":"solr.LowerCaseFilterFactory"
+                    },
+                    {
+                        "class": "solr.StopFilterFactory",
+                        "ignoreCase": true
+                    },
+                    /* solr.HunspellStemFilterFactory if we can find the dictionaries */
+                    {
+                        "class":"solr.DoubleMetaphoneFilterFactory"
+                    }
+                ]
             }
         },
         {
