@@ -13,7 +13,7 @@ curl -X POST -H 'Content-type:application/json' \
   http://localhost:8983/solr/news/schema
 
 # Populate collection
-bin/post -c news /data/fake_clean.csv
+bin/post -c news /data/fake_clean_body_split.csv
 
 # Restart in foreground mode so we can access the interface
 solr restart -f
