@@ -8,8 +8,6 @@ params = {
     'q': 'author:Alex (title:Russia OR body_en:Russia OR body_fr:Russie OR body_de:Russland OR body_es:Rusia OR body_ru:Россия)',
     'indent': 'true',
     'q.op': 'AND',
-    'defType': 'edismax',
-    'qf': 'author^2',
     'wt': 'json',
     'rows': 10
 }
@@ -20,7 +18,7 @@ results = requests.get(QUERY_URL, params=params).json()['response']['docs']
 params = {
     'q': '((title:FBI OR body_fr:FBI OR body_en:FBI OR body_de:FBI OR body_es:FBI OR body_ru:FBI) AND type:conspiracy)^=2 ' +
             '((title:FBI OR body_fr:FBI OR body_en:FBI OR body_de:FBI OR body_es:FBI OR body_ru:FBI) AND ' +
-            '(body_fr:conspiration OR body_en:conspiracy OR body_de:verschwörung OR body_es:conspiración OR body_ru:конспирология))',
+            '(body_fr:conspiration OR body_en:conspiracy OR body_de:verschwörung OR body_es:conspiración OR body_ru:конспирология))^=1',
     'indent': 'true',
     'q.op': 'OR',
     'wt': 'json',
@@ -34,6 +32,8 @@ params = {
     'q': 'title:war body_fr:guerre body_en:war body_de:krieg body_es:guerra body_ru:война',
     'indent': 'true',
     'q.op': 'OR',
+    'defType': 'edismax',
+    'qf': 'title^2',
     'sort': 'spam_score desc',
     'wt': 'json',
     'rows': 10
@@ -45,7 +45,7 @@ results = requests.get(QUERY_URL, params=params).json()['response']['docs']
 # NEEDS TO BE FINISHED
 params = {
     'q': 'country:US AND (title:"elections" OR body_fr:"élections" OR body_en:"elections" OR body_de:"wahlen" OR body_es:"elecciones" OR body_ru:"выборы" )' + 
-            '',
+            '(title:"elections" OR body_fr:"élections" OR body_en:"elections" OR body_de:"wahlen" OR body_es:"elecciones" OR body_ru:"выборы" )',
     'indent': 'true',
     'q.op': 'OR',
     'wt': 'json',
