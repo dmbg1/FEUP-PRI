@@ -106,6 +106,10 @@
                     {
                         "class":"solr.SnowballPorterFilterFactory",
                         "language":"English"
+                    },
+                    {
+                        "class":"solr.SynonymGraphFilterFactory",
+                        "synonyms":"synonyms.txt"
                     }
                 ]
             }
@@ -435,6 +439,10 @@
                     },
                     {
                         "class":"solr.DoubleMetaphoneFilterFactory"
+                    },
+                    {
+                        "class":"solr.SynonymGraphFilterFactory",
+                        "synonyms":"synonyms.txt"
                     }
                 ]
             }
