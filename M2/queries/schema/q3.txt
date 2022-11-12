@@ -1,0 +1,30 @@
+"id": "fd760c82-754f-4691-9d8a-688a92f2c6a6"
+Relevante
+
+"id": "7897614b-b29c-49f9-a134-6096d54d2f92"
+Relevante
+
+"id": "530af29e-a2b9-4788-a8b1-0a171ac6a1fb"
+Relevante
+
+"id": "c359d59f-42ec-46b5-812d-e107d561edb5"
+Relevante
+
+"id": "d3b1b7ab-4044-4306-b844-e6fa6d65d8d1",
+Relevante
+
+"id": "1bbe16f9-4d53-443b-a217-f51fff5d1646"
+Irrelevante (notícia muito longa)
+
+"id": "fd06c8ce-09a8-4a9e-bda1-9dd469661015"
+Irrelevante (Por causa do filtro fonético DoubleMetaphoneFilterFactory a palavra war é confundida com wire) 
+
+"id": "372b03fc-04d1-4cdd-9f6e-69901b0039c6"
+Relevante
+
+"id": "4593a21c-2019-4aef-be80-dc52865e7abb"
+?
+
+"id": "6e4dd090-bc88-461c-941a-1598e13fb7d4"
+
+

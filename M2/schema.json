@@ -465,7 +465,7 @@
         {
             "name": "published",
             "type": "date",
-            "indexed": true
+            "indexed": false
         },
         {
             "name": "title",
@@ -500,12 +500,12 @@
         {
             "name": "language",
             "type": "baseText",
-            "indexed": true
+            "indexed": false
         },
         {
             "name": "site_url",
             "type": "baseText",
-            "indexed": true
+            "indexed": false
         },
         {
             "name": "country",

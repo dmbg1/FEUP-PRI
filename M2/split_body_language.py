@@ -32,4 +32,6 @@ data.loc[data['language'] == 'russian', 'body_ru'] = data['body']
 
 data.drop(columns=['body'], inplace=True)
 
+data['id'] = data.index
+
 data.to_csv('./data/fake_clean_body_split.csv', index=False)
