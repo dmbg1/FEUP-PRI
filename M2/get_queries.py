@@ -33,7 +33,7 @@ params = {
     'indent': 'true',
     'q.op': 'AND',
     'defType': 'edismax',
-    'qf': 'type^2',
+    'qf': 'type^2 title^2',
     'wt': 'json',
     'rows': 20
 }
@@ -73,6 +73,8 @@ params = {
             '((title:elections OR body_en:elections) AND (title:"United States" OR body_en:"United States"))^=1',
     'indent': 'true',
     'q.op': 'OR',
+    'defType': 'edismax',
+    'qf': 'title^2',
     'wt': 'json',
     'rows': 20
 }
