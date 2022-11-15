@@ -1,30 +1,59 @@
-"id": "fd760c82-754f-4691-9d8a-688a92f2c6a6"
+"id": 4452
+Relevante 
+
+"id": 4413
+Relevante 
+
+"id": 4436
 Relevante
 
-"id": "7897614b-b29c-49f9-a134-6096d54d2f92"
+"id": 5746
 Relevante
 
-"id": "530af29e-a2b9-4788-a8b1-0a171ac6a1fb"
+"id": 609
 Relevante
 
-"id": "c359d59f-42ec-46b5-812d-e107d561edb5"
-Relevante
+"id": 4469
+Irrelevante (Notícia muito longa)
 
-"id": "d3b1b7ab-4044-4306-b844-e6fa6d65d8d1",
-Relevante
-
-"id": "1bbe16f9-4d53-443b-a217-f51fff5d1646"
-Irrelevante (notícia muito longa)
-
-"id": "fd06c8ce-09a8-4a9e-bda1-9dd469661015"
+"id": 1830
 Irrelevante (Por causa do filtro fonético DoubleMetaphoneFilterFactory a palavra war é confundida com wire) 
 
-"id": "372b03fc-04d1-4cdd-9f6e-69901b0039c6"
+"id": 4399
+Relevante?
+
+"id": 6354
+Irrelevante (Notícia muito longa)
+
+"id": 4432
 Relevante
 
-"id": "4593a21c-2019-4aef-be80-dc52865e7abb"
-?
+"id": 4386
+Relevante?
 
-"id": "6e4dd090-bc88-461c-941a-1598e13fb7d4"
+"id": 50
+Irrelevante (filtro fonético)
 
+"id": 1908
+Irrelevante (filtro fonético)
 
+"id": 8798 
+Irrelevante (Palavra war não aparece)
+
+"id": 4275
+Irrelevante (Palavra war não aparece)
+
+"id": 4398
+Relevante
+
+"id": 4456
+Relevante
+
+"id": 9357
+Irrelevante (Palavra war não aparece)
+
+"id": 4471
+Relevante
+
+"id": 1824
+Irrelevante (filtro fonético)
