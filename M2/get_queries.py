@@ -258,8 +258,6 @@ def metrics(query_num):
 
         @metric
         def ap(results, relevant):
-            print("AP")
-            
             """Average Precision"""
             precision_values = [
                 len([
@@ -294,7 +292,6 @@ def metrics(query_num):
             ]
         )
         
-        index = all_results.index(results)
         if(index == 0):
             with open('results_no_schema_q' + str(query_num) + '.tex','w') as tf:
                 tf.write(df.to_latex())
@@ -341,14 +338,28 @@ def metrics(query_num):
         disp = PrecisionRecallDisplay([precision_recall_match.get(r) for r in recall_values], recall_values)
         
         if(index == 0):
-            disp.plot(ax=ax, name="Precision-Recall Curve - No Schema", color="red")
+            disp.plot(ax=ax, name="No Schema", color="red")
         elif(index == 1):
-            disp.plot(ax=ax, name="Precision-Recall Curve - No Modifiers", color="blue")
+            if(query_num == 2 or query_num == 3 or query_num == 1 ):
+                disp.plot(ax=ax, name="No Modifiers", color="blue", linestyle="--", dashes=(5, 5))
+            else: 
+                disp.plot(ax=ax, name="No Modifiers", color="blue")
         elif(index == 2):
-            disp.plot(ax=ax, name="Precision-Recall Curve - Schema & Modifiers", color="green")
+            if(query_num == 2 or query_num == 3 or query_num == 1):
+                disp.plot(ax=ax, name="Schema & Modifiers", color="lime", linestyle="--", dashes=(5, 15))
+            else: 
+                disp.plot(ax=ax, name="Schema & Modifiers", color="lime", linestyle="--", dashes=(5, 5))
+                
     
     ax.set_title("Precision-Recall Curve - Query " + str(query_num))
+    
+    if(query_num == 4 or query_num == 2 or query_num == 3):
+        plt.legend(loc='upper right')
+    
     plt.savefig('precision_recall_q' + str(query_num) + '.pdf')
 
 
+metrics(1)
+metrics(2)
+metrics(3)
 metrics(4)
