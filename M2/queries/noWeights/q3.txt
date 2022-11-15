@@ -1,1 +1,0 @@
-Mesmos resultados das queries com weights

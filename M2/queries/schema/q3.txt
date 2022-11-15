@@ -1,4 +1,4 @@
-"id": 4452
+"id": "4452"
 Relevante 
 
 "id": 4413
@@ -57,3 +57,24 @@ Relevante
 
 "id": 1824
 Irrelevante (filtro fonético)
+
+"id": 4381
+Irrelevante (Notícia muito longa)
+
+"id": 4458
+Irrelevante (War só referida 1 vez)
+
+"id": 4410
+Relevante
+
+"id": 4379
+Relevante?
+
+"id": 358
+Relevante?
+
+"id": 8370
+Relevante
+
+"id": 10800
+Irrelevante
