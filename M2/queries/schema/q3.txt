@@ -20,7 +20,7 @@ Irrelevante (Notícia muito longa)
 Irrelevante (Por causa do filtro fonético DoubleMetaphoneFilterFactory a palavra war é confundida com wire) 
 
 "id": 4399
-Relevante?
+Relevante
 
 "id": 6354
 Irrelevante (Notícia muito longa)
