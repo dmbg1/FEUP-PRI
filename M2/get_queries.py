@@ -10,11 +10,11 @@ QUERY_URL_NO_SCHEMA = "http://localhost:8983/solr/news_without_schema/select"
 
 # Does Alex (author) write news about Russia?
 params = {
-    'q': 'author:Alex (title:Russia OR body_en:Russia)',
+    'q': 'author:Alex AND Russia',
     'indent': 'true',
     'q.op': 'AND',
     'defType': 'edismax',
-    'qf': 'title^2',
+    'qf': 'title^2 body_en',
     'wt': 'json',
     'rows': 20
 }
@@ -29,11 +29,11 @@ with open("./M2/queries/schema/q1.json", "w+") as outfile:
 
 # Conspiracy fake news about the FBI
 params = {
-    'q': '(title:FBI OR body_en:FBI) (type:conspiracy OR (title:conspiracy OR body_en:conspiracy))',
+    'q': 'FBI conspiracy',
     'indent': 'true',
     'q.op': 'AND',
     'defType': 'edismax',
-    'qf': 'type^2 title^2',
+    'qf': 'type^4 title^2 body_en',
     'wt': 'json',
     'rows': 20
 }
@@ -49,11 +49,11 @@ with open("./M2/queries/schema/q2.json", "w+") as outfile:
 
 # What highly spammy news have there been about war?
 params = {
-    'q': 'title:war body_en:war',
+    'q': 'war',
     'indent': 'true',
     'q.op': 'OR',
     'defType': 'edismax',
-    'qf': 'title^2',
+    'qf': 'title^2 body_en',
     'fq': 'spam_score:[0.8 TO *]',
     'wt': 'json',
     'rows': 20
@@ -69,12 +69,11 @@ with open("./M2/queries/schema/q3.json", "w+") as outfile:
 
 # Fake news related to the presidential elections in the United States
 params = {
-    'q': '(country:US AND ((title:elections OR body_en:elections) OR (title:"presidential elections"~3 OR body_en:"presidential elections"~3)^=2))' +
-            '(title:"american elections"~4 OR body_en:"american elections"~4)^=0.5',
+    'q': '(country:US AND "presidential elections"~5) "american elections"~4',
     'indent': 'true',
     'q.op': 'OR',
     'defType': 'edismax',
-    'qf': 'title^2',
+    'qf': 'title^2 body_en',
     'wt': 'json',
     'rows': 20
 }
@@ -114,9 +113,11 @@ SCHEMA - NO WEIGHTS
 
 # Does Alex (author) write news about Russia?
 params = {
-    'q': 'author:Alex (title:Russia OR body_en:Russia)',
+    'q': 'author:Alex AND Russia',
     'indent': 'true',
     'q.op': 'AND',
+    'defType': 'edismax',
+    'qf': 'title body_en',
     'wt': 'json',
     'rows': 20
 }
@@ -136,9 +137,11 @@ with open("./M2/queries/noWeights/q1.json", "w+") as outfile:
     
 # Conspiracy fake news about the FBI
 params = {
-    'q': '(title:FBI OR body_en:FBI) (type:conspiracy OR (title:conspiracy OR body_en:conspiracy))',
+    'q': 'FBI conspiracy',
     'indent': 'true',
     'q.op': 'AND',
+    'defType': 'edismax',
+    'qf': 'type title body_en',
     'wt': 'json',
     'rows': 20
 }
@@ -158,13 +161,16 @@ with open("./M2/queries/noWeights/q2.json", "w+") as outfile:
 
 # What highly spammy news have there been about war?
 params = {
-    'q': 'title:war body_en:war',
+    'q': 'war',
     'indent': 'true',
     'q.op': 'OR',
+    'defType': 'edismax',
+    'qf': 'title body_en',
     'fq': 'spam_score:[0.8 TO *]',
     'wt': 'json',
     'rows': 20
 }
+
 results_no_schema = requests.get(QUERY_URL_NO_SCHEMA, params=params).json()['response']['docs']
 results = requests.get(QUERY_URL, params=params).json()['response']['docs']
 
@@ -180,10 +186,11 @@ with open("./M2/queries/noWeights/q3.json", "w+") as outfile:
 
 # Fake news related to the presidential elections in the United States
 params = {
-    'q': '(country:US AND ((title:elections OR body_en:elections) OR (title:"presidential elections" OR body_en:"presidential elections")))' +
-            '(title:"american elections" OR body_en:"american elections")',
+    'q': '(country:US AND "presidential elections") "american elections"',
     'indent': 'true',
     'q.op': 'OR',
+    'defType': 'edismax',
+    'qf': 'title body_en',
     'wt': 'json',
     'rows': 20
 }
@@ -351,7 +358,7 @@ def metrics(query_num):
                 disp.plot(ax=ax, name="Schema & Modifiers", color="lime", linestyle="--", dashes=(5, 5))
                 
     
-    ax.set_title("Precision-Recall Curve - Query " + str(query_num))
+    ax.set_title("Precision-Recall Curve")
     
     if(query_num == 4 or query_num == 2 or query_num == 3):
         plt.legend(loc='upper right')
