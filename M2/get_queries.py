@@ -348,9 +348,9 @@ def metrics(query_num):
             disp.plot(ax=ax, name="No Schema", color="red")
         elif(index == 1):
             if(query_num == 2 or query_num == 3 or query_num == 1 ):
-                disp.plot(ax=ax, name="No Modifiers", color="blue", linestyle="--", dashes=(5, 5))
+                disp.plot(ax=ax, name="No Modifiers", color="blue", linestyle="--", dashes=(5, 15))
             else: 
-                disp.plot(ax=ax, name="No Modifiers", color="blue")
+                disp.plot(ax=ax, name="No Modifiers", color="blue", linestyle="--", dashes=(5, 5))
         elif(index == 2):
             if(query_num == 2 or query_num == 3 or query_num == 1):
                 disp.plot(ax=ax, name="Schema & Modifiers", color="lime", linestyle="--", dashes=(5, 15))
@@ -360,13 +360,15 @@ def metrics(query_num):
     
     ax.set_title("Precision-Recall Curve")
     
-    if(query_num == 4 or query_num == 2 or query_num == 3):
+    if(query_num == 2 or query_num == 3):
         plt.legend(loc='upper right')
+    elif(query_num == 4):
+        plt.legend(bbox_to_anchor=(0.45, 0.7))
     
     plt.savefig('precision_recall_q' + str(query_num) + '.pdf')
 
 
-metrics(1)
-metrics(2)
-metrics(3)
+# metrics(1)
+# metrics(2)
+# metrics(3)
 metrics(4)
