@@ -34,4 +34,6 @@ data.drop(columns=['body'], inplace=True)
 
 data['id'] = data.index
 
+data = data[data['id'] != 2660]
+
 data.to_csv('./data/fake_clean_body_split.csv', index=False)
