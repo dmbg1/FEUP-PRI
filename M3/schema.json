@@ -1,0 +1,526 @@
+{
+	"add-field-type": [
+        {
+            "name":"authorName",
+            "class":"solr.TextField",
+            "indexAnalyzer":{
+                "tokenizer": {
+                    "class": "solr.StandardTokenizerFactory"
+                },
+                "filters": [
+                    {   "class":"solr.ASCIIFoldingFilterFactory",
+                        "preserveOriginal":true
+                    },
+                    {
+                        "class":"solr.LowerCaseFilterFactory"
+                    },
+                    {   
+                        "class":"solr.BeiderMorseFilterFactory",
+                        "nameType":"GENERIC",
+                        "ruleType":"APPROX",
+                        "concat":false
+                    },
+                    {
+                        "class": "solr.CommonGramsFilterFactory"
+                    }
+                ]
+            },
+            "queryAnalyzer":{
+                "tokenizer": {
+                    "class": "solr.StandardTokenizerFactory"
+                },
+                "filters": [
+                    {   "class":"solr.ASCIIFoldingFilterFactory",
+                        "preserveOriginal":true
+                    },
+                    {
+                        "class":"solr.LowerCaseFilterFactory"
+                    },
+                    {   
+                        "class":"solr.BeiderMorseFilterFactory",
+                        "nameType":"GENERIC",
+                        "ruleType":"APPROX",
+                        "concat":false
+                    },
+                    {
+                        "class": "solr.CommonGramsFilterFactory"
+                    }
+                ]
+            }
+        },
+        {
+            "name":"newsBodyEn",
+            "class":"solr.TextField",
+            "indexAnalyzer":{
+                "tokenizer":{
+                    "class":"solr.StandardTokenizerFactory"
+                },
+                "filters":[
+                    {
+                        "class":"solr.ASCIIFoldingFilterFactory",
+                        "preserveOriginal":true
+                    },
+                    {
+                        "class":"solr.LowerCaseFilterFactory"
+                    },
+                    {
+                        "class":"solr.PatternReplaceFilterFactory",
+                        "pattern":"\n",
+                        "replacement":" "
+                    }, 
+                    {
+                        "class": "solr.StopFilterFactory",
+                        "ignoreCase": true
+                    },
+                    {
+                        "class":"solr.HyphenatedWordsFilterFactory"
+                    },
+                    {
+                        "class":"solr.DoubleMetaphoneFilterFactory"
+                    },
+                    {
+                        "class":"solr.SnowballPorterFilterFactory",
+                        "language":"English"
+                    }
+                ]
+            },
+            "queryAnalyzer":{
+                "tokenizer":{
+                    "class":"solr.StandardTokenizerFactory"
+                },
+                "filters":[
+                    {
+                        "class":"solr.ASCIIFoldingFilterFactory",
+                        "preserveOriginal":true
+                    },
+                    {
+                        "class":"solr.LowerCaseFilterFactory"
+                    },
+                    {
+                        "class": "solr.StopFilterFactory",
+                        "ignoreCase": true
+                    },
+                    {
+                        "class":"solr.DoubleMetaphoneFilterFactory"
+                    },
+                    {
+                        "class":"solr.SnowballPorterFilterFactory",
+                        "language":"English"
+                    },
+                    {
+                        "class":"solr.SynonymGraphFilterFactory",
+                        "synonyms":"synonyms.txt"
+                    }
+                ]
+            }
+        },
+        {
+            "name":"newsBodyDe",
+            "class":"solr.TextField",
+            "indexAnalyzer":{
+                "tokenizer":{
+                    "class":"solr.StandardTokenizerFactory"
+                },
+                "filters":[
+                    {
+                        "class":"solr.ASCIIFoldingFilterFactory",
+                        "preserveOriginal":true
+                    },
+                    {
+                        "class":"solr.LowerCaseFilterFactory"
+                    },
+                    {
+                        "class":"solr.PatternReplaceFilterFactory",
+                        "pattern":"\n",
+                        "replacement":" "
+                    }, 
+                    {
+                        "class": "solr.StopFilterFactory",
+                        "ignoreCase": true
+                    },
+                    {
+                        "class":"solr.HyphenatedWordsFilterFactory"
+                    },
+                    {
+                        "class":"solr.DoubleMetaphoneFilterFactory"
+                    },
+                    {
+                        "class":"solr.SnowballPorterFilterFactory",
+                        "language":"German"
+                    }
+                ]
+            },
+            "queryAnalyzer":{
+                "tokenizer":{
+                    "class":"solr.StandardTokenizerFactory"
+                },
+                "filters":[
+                    {
+                        "class":"solr.ASCIIFoldingFilterFactory",
+                        "preserveOriginal":true
+                    },
+                    {
+                        "class":"solr.LowerCaseFilterFactory"
+                    },
+                    {
+                        "class": "solr.StopFilterFactory",
+                        "ignoreCase": true
+                    },
+                    {
+                        "class":"solr.DoubleMetaphoneFilterFactory"
+                    },
+                    {
+                        "class":"solr.SnowballPorterFilterFactory",
+                        "language":"German"
+                    }
+                ]
+            }
+        },
+        {
+            "name":"newsBodyFr",
+            "class":"solr.TextField",
+            "indexAnalyzer":{
+                "tokenizer":{
+                    "class":"solr.StandardTokenizerFactory"
+                },
+                "filters":[
+                    {
+                        "class":"solr.ASCIIFoldingFilterFactory",
+                        "preserveOriginal":true
+                    },
+                    {
+                        "class":"solr.LowerCaseFilterFactory"
+                    },
+                    {
+                        "class":"solr.PatternReplaceFilterFactory",
+                        "pattern":"\n",
+                        "replacement":" "
+                    }, 
+                    {
+                        "class": "solr.StopFilterFactory",
+                        "ignoreCase": true
+                    },
+                    {
+                        "class":"solr.HyphenatedWordsFilterFactory"
+                    },
+                    {
+                        "class":"solr.DoubleMetaphoneFilterFactory"
+                    },
+                    {
+                        "class":"solr.SnowballPorterFilterFactory",
+                        "language":"French"
+                    }
+                ]
+            },
+            "queryAnalyzer":{
+                "tokenizer":{
+                    "class":"solr.StandardTokenizerFactory"
+                },
+                "filters":[
+                    {
+                        "class":"solr.ASCIIFoldingFilterFactory",
+                        "preserveOriginal":true
+                    },
+                    {
+                        "class":"solr.LowerCaseFilterFactory"
+                    },
+                    {
+                        "class": "solr.StopFilterFactory",
+                        "ignoreCase": true
+                    },
+                    {
+                        "class":"solr.DoubleMetaphoneFilterFactory"
+                    },
+                    {
+                        "class":"solr.SnowballPorterFilterFactory",
+                        "language":"French"
+                    }
+                ]
+            }
+        },
+        {
+            "name":"newsBodyEs",
+            "class":"solr.TextField",
+            "indexAnalyzer":{
+                "tokenizer":{
+                    "class":"solr.StandardTokenizerFactory"
+                },
+                "filters":[
+                    {
+                        "class":"solr.ASCIIFoldingFilterFactory",
+                        "preserveOriginal":true
+                    },
+                    {
+                        "class":"solr.LowerCaseFilterFactory"
+                    },
+                    {
+                        "class":"solr.PatternReplaceFilterFactory",
+                        "pattern":"\n",
+                        "replacement":" "
+                    }, 
+                    {
+                        "class": "solr.StopFilterFactory",
+                        "ignoreCase": true
+                    },
+                    {
+                        "class":"solr.HyphenatedWordsFilterFactory"
+                    },
+                    {
+                        "class":"solr.DoubleMetaphoneFilterFactory"
+                    },
+                    {
+                        "class":"solr.SnowballPorterFilterFactory",
+                        "language":"Spanish"
+                    }
+                ]
+            },
+            "queryAnalyzer":{
+                "tokenizer":{
+                    "class":"solr.StandardTokenizerFactory"
+                },
+                "filters":[
+                    {
+                        "class":"solr.ASCIIFoldingFilterFactory",
+                        "preserveOriginal":true
+                    },
+                    {
+                        "class":"solr.LowerCaseFilterFactory"
+                    },
+                    {
+                        "class": "solr.StopFilterFactory",
+                        "ignoreCase": true
+                    },
+                    {
+                        "class":"solr.DoubleMetaphoneFilterFactory"
+                    },
+                    {
+                        "class":"solr.SnowballPorterFilterFactory",
+                        "language":"English"
+                    }
+                ]
+            }
+        },
+        {
+            "name":"newsBodyRu",
+            "class":"solr.TextField",
+            "indexAnalyzer":{
+                "tokenizer":{
+                    "class":"solr.StandardTokenizerFactory"
+                },
+                "filters":[
+                    {
+                        "class":"solr.ASCIIFoldingFilterFactory",
+                        "preserveOriginal":true
+                    },
+                    {
+                        "class":"solr.LowerCaseFilterFactory"
+                    },
+                    {
+                        "class":"solr.PatternReplaceFilterFactory",
+                        "pattern":"\n",
+                        "replacement":" "
+                    }, 
+                    {
+                        "class": "solr.StopFilterFactory",
+                        "ignoreCase": true
+                    },
+                    {
+                        "class":"solr.HyphenatedWordsFilterFactory"
+                    },
+                    {
+                        "class":"solr.DoubleMetaphoneFilterFactory"
+                    },
+                    {
+                        "class":"solr.SnowballPorterFilterFactory",
+                        "language":"Russian"
+                    }
+                ]
+            },
+            "queryAnalyzer":{
+                "tokenizer":{
+                    "class":"solr.StandardTokenizerFactory"
+                },
+                "filters":[
+                    {
+                        "class":"solr.ASCIIFoldingFilterFactory",
+                        "preserveOriginal":true
+                    },
+                    {
+                        "class":"solr.LowerCaseFilterFactory"
+                    },
+                    {
+                        "class": "solr.StopFilterFactory",
+                        "ignoreCase": true
+                    },
+                    {
+                        "class":"solr.DoubleMetaphoneFilterFactory"
+                    },
+                    {
+                        "class":"solr.SnowballPorterFilterFactory",
+                        "language":"English"
+                    }
+                ]
+            }
+        },
+        {
+            "name":"baseText",
+            "class":"solr.TextField",
+            "indexAnalyzer":{
+                "tokenizer":{
+                    "class":"solr.StandardTokenizerFactory"
+                },
+                "filters":[
+                    {
+                        "class":"solr.ASCIIFoldingFilterFactory",
+                        "preserveOriginal":true
+                    },
+                    {
+                        "class":"solr.LowerCaseFilterFactory"
+                    }
+                ]
+            },
+            "queryAnalyzer":{
+                "tokenizer":{
+                    "class":"solr.StandardTokenizerFactory"
+                },
+                "filters":[
+                    {
+                        "class":"solr.ASCIIFoldingFilterFactory",
+                        "preserveOriginal":true
+                    },
+                    {
+                        "class":"solr.LowerCaseFilterFactory"
+                    }
+                ]
+            }
+        },
+        {
+            "name":"newsTitle",
+            "class":"solr.TextField",
+            "indexAnalyzer":{
+                "tokenizer":{
+                    "class":"solr.StandardTokenizerFactory"
+                },
+                "filters":[
+                    {
+                        "class":"solr.ASCIIFoldingFilterFactory",
+                        "preserveOriginal":true
+                    },
+                    {
+                        "class":"solr.LowerCaseFilterFactory"
+                    },
+                    {
+                        "class": "solr.StopFilterFactory",
+                        "ignoreCase": true
+                    },
+                    {
+                        "class":"solr.HyphenatedWordsFilterFactory" 
+                    },
+                    {
+                        "class":"solr.DoubleMetaphoneFilterFactory"
+                    }
+                ]
+            },
+            "queryAnalyzer":{
+                "tokenizer":{
+                    "class":"solr.StandardTokenizerFactory"
+                },
+                "filters":[
+                    {
+                        "class":"solr.ASCIIFoldingFilterFactory",
+                        "preserveOriginal":true
+                    },
+                    {
+                        "class":"solr.LowerCaseFilterFactory"
+                    },
+                    {
+                        "class": "solr.StopFilterFactory",
+                        "ignoreCase": true
+                    },
+                    {
+                        "class":"solr.DoubleMetaphoneFilterFactory"
+                    },
+                    {
+                        "class":"solr.SynonymGraphFilterFactory",
+                        "synonyms":"synonyms.txt"
+                    }
+                ]
+            }
+        },
+        {
+            "name":"float",
+            "class":"solr.FloatPointField"
+        },
+        {
+            "name":"date",
+            "class": "solr.DatePointField"
+        }
+    ],
+    "add-field": [
+        {
+            "name": "author",
+            "type": "authorName",
+            "indexed": true
+        },
+        {
+            "name": "published",
+            "type": "date",
+            "indexed": false
+        },
+        {
+            "name": "title",
+            "type": "newsTitle",
+            "indexed": true
+        },
+        {
+            "name": "body_en",
+            "type": "newsBodyEn",
+            "indexed": true
+        },
+        {
+            "name": "body_de",
+            "type": "newsBodyDe",
+            "indexed": true
+        },
+        {
+            "name": "body_fr",
+            "type": "newsBodyFr",
+            "indexed": true
+        },
+        {
+            "name": "body_es",
+            "type": "newsBodyEs",
+            "indexed": true
+        },
+        {
+            "name": "body_ru",
+            "type": "newsBodyRu",
+            "indexed": true
+        },
+        {
+            "name": "language",
+            "type": "baseText",
+            "indexed": false
+        },
+        {
+            "name": "site_url",
+            "type": "baseText",
+            "indexed": false
+        },
+        {
+            "name": "country",
+            "type": "baseText",
+            "indexed": true
+        },
+        {
+            "name": "spam_score",
+            "type": "float",
+            "indexed": true
+        },
+        {
+            "name": "type",
+            "type": "baseText",
+            "indexed": true
+        }
+    ]
+}
