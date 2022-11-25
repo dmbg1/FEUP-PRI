@@ -145,6 +145,10 @@
                         "class":"solr.DoubleMetaphoneFilterFactory"
                     },
                     {
+                        "class":"solr.DictionaryCompoundWordTokenFilterFactory",
+                        "dictionary":"conf/dictionary-de.txt"
+                    },
+                    {
                         "class":"solr.SnowballPorterFilterFactory",
                         "language":"German"
                     }
