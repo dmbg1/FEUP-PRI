@@ -8,13 +8,14 @@ solr start
 
 sleep 5
 
+cp /lang/synonyms_en.txt /var/solr/data/news/conf/lang/synonyms_en.txt
+cp /lang/dictionary_de.txt /var/solr/data/news/conf/lang/dictionary_de.txt
+
 # Schema definition via API
 curl -X POST -H 'Content-type:application/json' \
   --data-binary @/data/schema.json \
   http://localhost:8983/solr/news/schema
 
-cp /data/synonyms.txt /var/solr/data/news/conf/synonyms.txt
-cp /data/dictionary-de.txt /var/solr/data/news/conf/dictionary-de.txt
 
 # Populate collection
 bin/post -c news /data/fake_clean_body_split.csv

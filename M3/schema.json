@@ -109,7 +109,7 @@
                     },
                     {
                         "class":"solr.SynonymGraphFilterFactory",
-                        "synonyms":"synonyms.txt"
+                        "synonyms":"lang/synonyms_en.txt"
                     }
                 ]
             }
@@ -146,7 +146,7 @@
                     },
                     {
                         "class":"solr.DictionaryCompoundWordTokenFilterFactory",
-                        "dictionary":"conf/dictionary-de.txt"
+                        "dictionary":"lang/dictionary_de.txt"
                     },
                     {
                         "class":"solr.SnowballPorterFilterFactory",
@@ -446,7 +446,7 @@
                     },
                     {
                         "class":"solr.SynonymGraphFilterFactory",
-                        "synonyms":"synonyms.txt"
+                        "synonyms":"lang/synonyms_en.txt"
                     }
                 ]
             }
