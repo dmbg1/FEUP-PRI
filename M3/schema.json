@@ -472,8 +472,28 @@
             "indexed": false
         },
         {
-            "name": "title",
-            "type": "newsTitle",
+            "name": "title_en",
+            "type": "newsBodyEn",
+            "indexed": true
+        },
+        {
+            "name": "title_de",
+            "type": "newsBodyDe",
+            "indexed": true
+        },
+        {
+            "name": "title_fr",
+            "type": "newsBodyFr",
+            "indexed": true
+        },
+        {
+            "name": "title_es",
+            "type": "newsBodyEs",
+            "indexed": true
+        },
+        {
+            "name": "title_ru",
+            "type": "newsBodyRu",
             "indexed": true
         },
         {
