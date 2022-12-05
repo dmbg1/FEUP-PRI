@@ -18,8 +18,8 @@ curl -X POST -H 'Content-type:application/json' \
 
 
 # Populate collection
-bin/post -c news /data/fake_clean_body_split.csv
-bin/post -c news_without_schema /data/fake_clean_body_split.csv
+bin/post -c news /data/fake_clean.csv
+bin/post -c news_without_schema /data/fake_clean.csv
 
 # Restart in foreground mode so we can access the interface
 solr restart -f
