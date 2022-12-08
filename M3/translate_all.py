@@ -1,7 +1,9 @@
 from translate import Translator
 
-
-query = 'FBI conspiracy'
+#query = 'author:Alex AND Russia'
+#query = 'FBI conspiracy'
+#query = 'war'
+query = '(country:US AND "presidential elections"~5) "american elections"~4'
 
 def translate_query(query, lang):
     translator = Translator(to_lang=lang)
@@ -12,14 +14,16 @@ def translate_query(query, lang):
     i = 0
     while (i < len(splits)):
         if('"' in splits[i]):
+            print('i:', i, 'splits[i]:', splits[i])
             j = 1
             if(len(splits) > i+j):
                 while ('"' not in splits[i+j]):
                     splits[i] += ' ' + splits[i+j]
                     splits[i + j] = ''
-                    j += 1
-                splits[i] += ' ' + splits[i+j]
-                splits[i + j] = ''
+                    if(len(splits) > i+j+1):
+                        j += 1
+                    else:
+                        break
             i += j + 1
         else:
             i += 1
@@ -27,21 +31,41 @@ def translate_query(query, lang):
     while '' in splits:
         splits.remove('')
 
+    i = 0
+    while (i < len(splits)):
+        if not (':' in splits[i] or splits[i] in stopWords):
+            j = 1
+            if(len(splits) > i+j):
+                while(not (':' in splits[i+j] or splits[i+j] in stopWords)):
+                    splits[i] += ' ' + splits[i+j]
+                    splits[i + j] = ''
+                    if(len(splits) > i+j+1):
+                        j += 1
+                    else:
+                        break
+            i += j + 1
+        else:
+            i += 1
+
+    while '' in splits:
+        splits.remove('')
+    
     for i in range(len(splits)):
         if(':' in splits[i]):
             continue
         elif(splits[i] in stopWords):
             continue
         else:
-            splits[i] = translator.translate(splits[i])
-
-    print(splits)
+            if(lang == 'es' and splits[i] == 'war'):
+                splits[i] = 'guerra'
+            else:
+                splits[i] = translator.translate(splits[i])
     
     t_query = ""
     while len(splits):
         t_query += splits.pop(0) + ' '
         
-    if(lang == 'fr'):
+    if(lang == 'fr' or lang == 'ru'):
         t_query = t_query.replace('«', '"')
         t_query = t_query.replace('»', '"')
     elif(lang == 'de'):
