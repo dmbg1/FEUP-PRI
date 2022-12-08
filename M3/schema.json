@@ -76,9 +76,6 @@
                         "class":"solr.HyphenatedWordsFilterFactory"
                     },
                     {
-                        "class":"solr.DoubleMetaphoneFilterFactory"
-                    },
-                    {
                         "class":"solr.SnowballPorterFilterFactory",
                         "language":"English"
                     }
@@ -101,15 +98,12 @@
                         "ignoreCase": true
                     },
                     {
-                        "class":"solr.DoubleMetaphoneFilterFactory"
+                        "class":"solr.SynonymGraphFilterFactory",
+                        "synonyms":"lang/synonyms_en.txt"
                     },
                     {
                         "class":"solr.SnowballPorterFilterFactory",
                         "language":"English"
-                    },
-                    {
-                        "class":"solr.SynonymGraphFilterFactory",
-                        "synonyms":"lang/synonyms_en.txt"
                     }
                 ]
             }
@@ -142,9 +136,6 @@
                         "class":"solr.HyphenatedWordsFilterFactory"
                     },
                     {
-                        "class":"solr.DoubleMetaphoneFilterFactory"
-                    },
-                    {
                         "class":"solr.DictionaryCompoundWordTokenFilterFactory",
                         "dictionary":"lang/dictionary_de.txt"
                     },
@@ -171,7 +162,8 @@
                         "ignoreCase": true
                     },
                     {
-                        "class":"solr.DoubleMetaphoneFilterFactory"
+                        "class":"solr.SynonymGraphFilterFactory",
+                        "synonyms":"lang/synonyms_de.txt"
                     },
                     {
                         "class":"solr.SnowballPorterFilterFactory",
@@ -208,9 +200,6 @@
                         "class":"solr.HyphenatedWordsFilterFactory"
                     },
                     {
-                        "class":"solr.DoubleMetaphoneFilterFactory"
-                    },
-                    {
                         "class":"solr.SnowballPorterFilterFactory",
                         "language":"French"
                     }
@@ -233,7 +222,8 @@
                         "ignoreCase": true
                     },
                     {
-                        "class":"solr.DoubleMetaphoneFilterFactory"
+                        "class":"solr.SynonymGraphFilterFactory",
+                        "synonyms":"lang/synonyms_fr.txt"
                     },
                     {
                         "class":"solr.SnowballPorterFilterFactory",
@@ -267,12 +257,6 @@
                         "ignoreCase": true
                     },
                     {
-                        "class":"solr.HyphenatedWordsFilterFactory"
-                    },
-                    {
-                        "class":"solr.DoubleMetaphoneFilterFactory"
-                    },
-                    {
                         "class":"solr.SnowballPorterFilterFactory",
                         "language":"Spanish"
                     }
@@ -295,11 +279,12 @@
                         "ignoreCase": true
                     },
                     {
-                        "class":"solr.DoubleMetaphoneFilterFactory"
+                        "class":"solr.SynonymGraphFilterFactory",
+                        "synonyms":"lang/synonyms_es.txt"
                     },
                     {
                         "class":"solr.SnowballPorterFilterFactory",
-                        "language":"English"
+                        "language":"Spanish"
                     }
                 ]
             }
@@ -329,12 +314,6 @@
                         "ignoreCase": true
                     },
                     {
-                        "class":"solr.HyphenatedWordsFilterFactory"
-                    },
-                    {
-                        "class":"solr.DoubleMetaphoneFilterFactory"
-                    },
-                    {
                         "class":"solr.SnowballPorterFilterFactory",
                         "language":"Russian"
                     }
@@ -357,11 +336,8 @@
                         "ignoreCase": true
                     },
                     {
-                        "class":"solr.DoubleMetaphoneFilterFactory"
-                    },
-                    {
                         "class":"solr.SnowballPorterFilterFactory",
-                        "language":"English"
+                        "language":"Russian"
                     }
                 ]
             }
