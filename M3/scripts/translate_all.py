@@ -3,7 +3,7 @@ from translate import Translator
 #query = 'author:Alex AND Russia'
 #query = 'FBI conspiracy'
 #query = 'war'
-query = '(country:US AND "presidential elections"~5) "american elections"~4'
+#query = '(country:US AND "presidential elections"~5) "american elections"~4'
 
 def translate_query(query, lang):
     translator = Translator(to_lang=lang)
@@ -14,7 +14,6 @@ def translate_query(query, lang):
     i = 0
     while (i < len(splits)):
         if('"' in splits[i]):
-            print('i:', i, 'splits[i]:', splits[i])
             j = 1
             if(len(splits) > i+j):
                 while ('"' not in splits[i+j]):
@@ -73,9 +72,10 @@ def translate_query(query, lang):
         t_query = t_query.replace('“', '"')
         
     print('QUERY:', t_query)
+    return t_query
 
-translate_query(query, 'es')
-translate_query(query, 'fr')
-translate_query(query, 'ru')
-translate_query(query, 'de')
-translate_query(query, 'en')
+#translate_query(query, 'es')
+#translate_query(query, 'fr')
+#translate_query(query, 'ru')
+#translate_query(query, 'de')
+#translate_query(query, 'en')

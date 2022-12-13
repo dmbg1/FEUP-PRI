@@ -49,7 +49,7 @@
             }
         },
         {
-            "name":"newsBodyEn",
+            "name":"textEn",
             "class":"solr.TextField",
             "indexAnalyzer":{
                 "tokenizer":{
@@ -109,7 +109,7 @@
             }
         },
         {
-            "name":"newsBodyDe",
+            "name":"textDe",
             "class":"solr.TextField",
             "indexAnalyzer":{
                 "tokenizer":{
@@ -130,18 +130,22 @@
                     }, 
                     {
                         "class": "solr.StopFilterFactory",
+                        "words": "lang/stopwords_de.txt",
+                        "format": "snowball",
                         "ignoreCase": true
                     },
                     {
-                        "class":"solr.HyphenatedWordsFilterFactory"
+                        "class":"solr.HyphenationCompoundWordTokenFilterFactory",
+                        "hyphenator":"lang/de_DR.xml",
+                        "dictionary":"lang/dictionary_de.txt",
+                        "onlyLongestMatch": true,
+                        "minSubwordSize": 4
                     },
                     {
-                        "class":"solr.DictionaryCompoundWordTokenFilterFactory",
-                        "dictionary":"lang/dictionary_de.txt"
+                        "class":"solr.GermanNormalizationFilterFactory"
                     },
                     {
-                        "class":"solr.SnowballPorterFilterFactory",
-                        "language":"German"
+                        "class":"solr.GermanLightStemFilterFactory"
                     }
                 ]
             },
@@ -159,6 +163,8 @@
                     },
                     {
                         "class": "solr.StopFilterFactory",
+                        "words": "lang/stopwords_de.txt",
+                        "format": "snowball",
                         "ignoreCase": true
                     },
                     {
@@ -166,14 +172,23 @@
                         "synonyms":"lang/synonyms_de.txt"
                     },
                     {
-                        "class":"solr.SnowballPorterFilterFactory",
-                        "language":"German"
+                        "class":"solr.HyphenationCompoundWordTokenFilterFactory",
+                        "hyphenator":"lang/de_DR.xml",
+                        "dictionary":"lang/dictionary_de.txt",
+                        "onlyLongestMatch": true,
+                        "minSubwordSize": 4
+                    },
+                    {
+                        "class":"solr.GermanNormalizationFilterFactory"
+                    },
+                    {
+                        "class":"solr.GermanLightStemFilterFactory"
                     }
                 ]
             }
         },
         {
-            "name":"newsBodyFr",
+            "name":"textFr",
             "class":"solr.TextField",
             "indexAnalyzer":{
                 "tokenizer":{
@@ -194,6 +209,8 @@
                     }, 
                     {
                         "class": "solr.StopFilterFactory",
+                        "words": "lang/stopwords_fr.txt",
+                        "format": "snowball",
                         "ignoreCase": true
                     },
                     {
@@ -219,6 +236,8 @@
                     },
                     {
                         "class": "solr.StopFilterFactory",
+                        "words": "lang/stopwords_fr.txt",
+                        "format": "snowball",
                         "ignoreCase": true
                     },
                     {
@@ -233,7 +252,7 @@
             }
         },
         {
-            "name":"newsBodyEs",
+            "name":"textEs",
             "class":"solr.TextField",
             "indexAnalyzer":{
                 "tokenizer":{
@@ -254,6 +273,8 @@
                     }, 
                     {
                         "class": "solr.StopFilterFactory",
+                        "words": "lang/stopwords_es.txt",
+                        "format": "snowball",
                         "ignoreCase": true
                     },
                     {
@@ -276,6 +297,8 @@
                     },
                     {
                         "class": "solr.StopFilterFactory",
+                        "words": "lang/stopwords_es.txt",
+                        "format": "snowball",
                         "ignoreCase": true
                     },
                     {
@@ -290,7 +313,7 @@
             }
         },
         {
-            "name":"newsBodyRu",
+            "name":"textRu",
             "class":"solr.TextField",
             "indexAnalyzer":{
                 "tokenizer":{
@@ -311,6 +334,8 @@
                     }, 
                     {
                         "class": "solr.StopFilterFactory",
+                        "words": "lang/stopwords_ru.txt",
+                        "format": "snowball",
                         "ignoreCase": true
                     },
                     {
@@ -333,6 +358,8 @@
                     },
                     {
                         "class": "solr.StopFilterFactory",
+                        "words": "lang/stopwords_ru.txt",
+                        "format": "snowball",
                         "ignoreCase": true
                     },
                     {
@@ -375,59 +402,6 @@
             }
         },
         {
-            "name":"newsTitle",
-            "class":"solr.TextField",
-            "indexAnalyzer":{
-                "tokenizer":{
-                    "class":"solr.StandardTokenizerFactory"
-                },
-                "filters":[
-                    {
-                        "class":"solr.ASCIIFoldingFilterFactory",
-                        "preserveOriginal":true
-                    },
-                    {
-                        "class":"solr.LowerCaseFilterFactory"
-                    },
-                    {
-                        "class": "solr.StopFilterFactory",
-                        "ignoreCase": true
-                    },
-                    {
-                        "class":"solr.HyphenatedWordsFilterFactory" 
-                    },
-                    {
-                        "class":"solr.DoubleMetaphoneFilterFactory"
-                    }
-                ]
-            },
-            "queryAnalyzer":{
-                "tokenizer":{
-                    "class":"solr.StandardTokenizerFactory"
-                },
-                "filters":[
-                    {
-                        "class":"solr.ASCIIFoldingFilterFactory",
-                        "preserveOriginal":true
-                    },
-                    {
-                        "class":"solr.LowerCaseFilterFactory"
-                    },
-                    {
-                        "class": "solr.StopFilterFactory",
-                        "ignoreCase": true
-                    },
-                    {
-                        "class":"solr.DoubleMetaphoneFilterFactory"
-                    },
-                    {
-                        "class":"solr.SynonymGraphFilterFactory",
-                        "synonyms":"lang/synonyms_en.txt"
-                    }
-                ]
-            }
-        },
-        {
             "name":"float",
             "class":"solr.FloatPointField"
         },
@@ -449,52 +423,52 @@
         },
         {
             "name": "title_en",
-            "type": "newsBodyEn",
+            "type": "textEn",
             "indexed": true
         },
         {
             "name": "title_de",
-            "type": "newsBodyDe",
+            "type": "textDe",
             "indexed": true
         },
         {
             "name": "title_fr",
-            "type": "newsBodyFr",
+            "type": "textFr",
             "indexed": true
         },
         {
             "name": "title_es",
-            "type": "newsBodyEs",
+            "type": "textEs",
             "indexed": true
         },
         {
             "name": "title_ru",
-            "type": "newsBodyRu",
+            "type": "textRu",
             "indexed": true
         },
         {
             "name": "body_en",
-            "type": "newsBodyEn",
+            "type": "textEn",
             "indexed": true
         },
         {
             "name": "body_de",
-            "type": "newsBodyDe",
+            "type": "textDe",
             "indexed": true
         },
         {
             "name": "body_fr",
-            "type": "newsBodyFr",
+            "type": "textFr",
             "indexed": true
         },
         {
             "name": "body_es",
-            "type": "newsBodyEs",
+            "type": "textEs",
             "indexed": true
         },
         {
             "name": "body_ru",
-            "type": "newsBodyRu",
+            "type": "textRu",
             "indexed": true
         },
         {

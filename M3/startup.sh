@@ -10,6 +10,7 @@ sleep 5
 
 cp /lang/synonyms_en.txt /var/solr/data/news/conf/lang/synonyms_en.txt
 cp /lang/synonyms_de.txt /var/solr/data/news/conf/lang/synonyms_de.txt
+cp /lang/de_DR.xml /var/solr/data/news/conf/lang/de_DR.xml
 cp /lang/synonyms_es.txt /var/solr/data/news/conf/lang/synonyms_es.txt
 cp /lang/synonyms_fr.txt /var/solr/data/news/conf/lang/synonyms_fr.txt
 cp /lang/dictionary_de.txt /var/solr/data/news/conf/lang/dictionary_de.txt
